@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<style type="text/css">
+	body {
+	text-align:center;
+	background: #0ca3d2;
+	}
+	table {
+		border:none;
+		width:80%;
+		height:100%; 
+		border-spacing:5px;
+		margin: 0 auto;
+	}
+	#label {
+		text-align:right;
+		font-weight: bold;
+	}
+	#inp {
+		text-align:left;
+	}
+	td {
+			padding:5px;
+	}
+	input[type="text"] {
+		width:50%;
+	 	border: 1px solid #000000;
+	
+	}
+	textarea {
+	 	border: 1px solid #000000;
+	
+	}
+	textarea:focus,input:focus {
+		    border:1px solid #00FF00;
+		    box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+		    
+	}
+	
+</style>
+<title>Insert title here</title>
+</head>
+<body>
+
+	<div id="profile"><h1>Enter Employee Details</h1><br>
+		
+		<form onsubmit="return validate()" id="profileForm" method="post" action="CreateEmpServlet">	
+			
+			<table >
+			<tr><td id="label">Employee ID:</td> <td id="inp"><input id="empId" type="text" name="empId"  /></td></tr>
+            <tr><td id="label">Access Level:</td> <td id="inp"><select id="accessLevel" name="accessLevel">
+																  <option value="1">1</option>
+																  <option value="2">2</option>
+																  <option value="3">3</option>
+																  <option value="4">4</option>
+															    </select></td></tr>
+			<tr><td id="label">Salary:</td> <td id="inp"><input id="sal" type="text" name="sal"  /></td></tr>
+            <tr><td id="label">First Name:</td> <td id="inp"><input id="fn" type="text" name="firstname"  /></td></tr>
+			<tr><td id="label">Middle Name:</td> <td id="inp"><input id="mn" type="text" name="middlename"  /><br></td></tr>
+			<tr><td id="label">Last Name:</td> <td id="inp"><input id="ln" type="text" name="lastname" /><br></td></tr>
+			<tr><td id="label">Address:</td> <td id="inp"><textarea name="addr" rows="3" cols="40%" id="addr" type="text" ></textarea><br></td></tr>
+			<tr><td id="label">Date Of Birth:</td> <td id="inp"><input id="dob" type="text" name="dob" /><br></td></tr>
+			<tr><td id="label">Mobile Number:</td><td id="inp"><input id="mob" type="text" name="mob" /><br></td></tr>
+			<tr><td id="label">Department:</td><td id="inp"><input id="dept" type="text" name="dept" /><br></td></tr>
+		    <tr><td id="label">Qualification:</td><td id="inp"><input id="qualf" type="text" name="qualf" /><br></td></tr>
+			<tr><td id="label">Designation:</td><td id="inp"><input id="desig" type="text" name="desig" /><br></td></tr>
+			<tr><td id="label">Dependence Name:</td> <td id="inp"><input id="depName" type="text" name="depName" /><br></td></tr>
+			<tr><td id="label">Dependence Relation:</td> <td id="inp"><input id="depRel" type="text" name="depRel" /><br></td></tr>
+			<tr><td id="label">Contact Number:</td> <td id="inp"><input id="contact" type="text" name="contact" /><br></td></tr>
+			<tr><td id="label">Email:</td> <td id="inp"><input id="email" type="text" name="email" /><br></td></tr>
+			<tr><td id="label">Blood Group:</td> <td id="inp"><input id="bloodGroup" type="text" name="bloodGroup" /><br></td></tr>
+			<tr><td id="label">PAN Number:</td> <td id="inp"><input id="panNum" type="text" name="panNum" /><br></td></tr>
+			<tr><td id="label">Library Number:</td> <td id="inp"><input id="libNum" type="text" name="libNum" /><br></td></tr>
+            </table>
+            <input  type="submit" value="CREATE" > 
+</form>
+</div>
+
+<script type="text/javascript">
+	
+	function trim(s)
+	{
+  		return s.replace(/^\s+|\s+$/, '');
+	} 
+	function validate(e) {
+		var input=document.getElementsByTagName("input");
+		var error="";
+		for(i=0;i<input.length;i++) {
+			var inp=input[i];
+			if(inp.value == "" || inp.value == undefined) {
+				error+="Please enter the "+inp.name+"\n";
+				inp.style.borderColor='red';
+				inp.style.boxShadow='0 0 5px rgba(81, 203, 238, 1)';
+			}
+		}
+		var email=document.getElementById("email");
+		var contact=document.getElementById("contact");
+		var mob=document.getElementById("mob");
+		var dob=document.getElementById("dob");
+	    var tfld = trim(email.value);
+	    var emailFilter = /^[^@]+@[^@.]+\.[^@]*\w\w$/ ;
+	    
+	    if (!emailFilter.test(tfld)) {              //test email for illegal characters
+        	
+        	email.style.borderColor = 'red';
+        	error+= "Please enter a valid email address.\n";
+		}
+		if(parseInt(contact.value) != parseInt(contact.value)) {
+		
+			contact.style.borderColor='red';
+			error+="Please enter a valid contact Number.";
+		}
+		if(parseInt(mob.value)!=parseInt(mob.value) && mob.value!=10) {
+		
+			mob.style.borderColor='red';
+			error+="Please enter a valid Mobile Number.\n";
+		}
+		if(!/^\d{1,2}\/\d{1,2}\/\d{1,2}$/.test(dob.value)  || dob.value.length!= 8) {
+		
+        	dob.style.borderColor='red';
+			error+="Please enter a valid date in DD/MM/YY format\n";
+		}
+		if(error != "") {
+			alert(error);
+			return false;
+		}	
+		return true;
+	}
+		
+</script>
+
+</body>
+</html>

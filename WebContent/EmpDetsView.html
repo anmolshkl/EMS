@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+<style>
+	body {
+	text-align:center;
+	background: #0ca3d2;
+	padding: 50px;
+	font-weight: bold;
+	}
+	form {
+		margin:10px;
+	}
+	
+</style>
+</head>
+<body>
+	Enter Employee ID:<br>
+	<form onsubmit="return validate()" action="EmpDetsServlet" method="post">
+	<input type="text" name="empId" id="empId" />
+	<input type="submit" value="SUBMIT">
+	</form>
+	
+	
+	
+	
+	
+	
+	
+<script>
+	var inp=document.getElementsByTagName("input")[0];
+	inp.addEventListener("blur",function(){
+										if(this.value == ""){
+											this.style.borderColor="#FF4E23";
+											this.style.boxShadow = "0px 0px 5px 1px #FF4E23";
+										}else {
+											this.style.borderColor="none";
+											this.style.boxShadow = "none";
+										}
+									});
+	function validate(){
+		var err="";
+		if(inp.value == ""){
+			inp.style.borderColor="#FF4E23";
+			inp.style.boxShadow = "0px 0px 5px 1px #FF4E23";
+			err+="Please enter an ID.\n";
+		}
+		if(err != "") {
+			alert(err);
+			return false;
+		}
+		return true;
+	}
+	
+
+</script>
+</body>
+</html>

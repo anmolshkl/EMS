@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+ 	<link rel="stylesheet" type="text/css" href="css/Index/style.css" />
+ <style>
+ 	#form {
+ 		border: 1px solid black;
+ 		border-radius:5px;	
+ 		width:50%;
+ 		height:50%; 
+ 		max-height:50%;		
+ 		margin:8% auto;
+ 		text-align:center;
+ 		font-size:100%;
+ 		padding:20px;
+ 	}
+	input[type='text'] {
+		width:30%;
+		height:10%;
+	
+	}
+	* {
+		border:none;
+	}
+	
+ </style>
+<title>Reset Password</title>
+</head>
+<body>
+	   <!-- <div id='cssmenu' >
+				<ul>
+				   <li class='active'><a href='index.html'><span>Home</span></a></li>
+				   <li><a href='#'><span>About</span></a></li>
+				   <li class='last'><a href='#'><span>Contact</span></a></li>
+	
+				</ul>
+		</div> --> 
+		
+	    <div id="main" >
+	      <div id="form" >
+	      <h1>Enter your Employee ID</h1>
+	    	<form onsubmit="return validate()" action="ForgotPassServlet" method="post">
+				<input type="text" id="empId" name="empId" /><br>
+				<input type="submit" id="submit" value="SUBMIT" >
+		    </form>	
+		  </div>
+	   	</div>
+	   	
+	   	<div id="footer"><br>
+            &#169 2014 EMS<a href="Help.html">Help</a>
+	   	</div>
+<script type="text/javascript">
+    function validate() {
+    	var empId=document.getElementById("empId");
+    	if(parseInt(empId.value) != parseInt(empId.value)) {
+    	 	alert("Please enter a valid Employee ID\n");
+    	 	empId.style.borderColor='red';
+     	}
+     }
+     
+</script>
+</body>
+</html>
